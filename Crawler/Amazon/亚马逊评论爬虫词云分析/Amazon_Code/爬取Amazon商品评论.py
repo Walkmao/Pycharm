@@ -28,7 +28,7 @@ proxies = {'http': proxy_ip}
 
 
 # 1、读取csv中的'Rank','item_name','reviews','reviews_link'
-csv_file = csv.reader(open('C:/Users/zbd/Desktop/3.csv','r'))
+csv_file = csv.reader(open('C:/Users/Mirco/Desktop/3.csv','r'))
 reviews_datalst = []
 for i in csv_file:
     reviews_data = {

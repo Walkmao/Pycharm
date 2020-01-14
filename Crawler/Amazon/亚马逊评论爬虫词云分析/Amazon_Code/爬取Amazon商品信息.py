@@ -48,7 +48,6 @@ get_item_info(url_page1)
 get_item_info(url_page2)
 
 
-
 # 2、在商品详情页爬取更多商品信息
 #item_url = 'https://www.amazon.com/Avidlove-Lingerie-Babydoll-Sleepwear-Chemise/dp/B0712188H2/ref=zg_bs_1044968_1?_encoding=UTF8&refRID=MYWGH1W2P3HNS58R4WES'
 def get_item_info_2(item_url,data):
@@ -92,7 +91,6 @@ def get_item_info_2(item_url,data):
     print(data)
 
 
-
 # 3、将商品详情写入csv文件
 for i in range(100):
     get_item_info_2(item_links[i],item_info[i])
@@ -100,7 +98,7 @@ for i in range(100):
 
 import csv
 headers = ['_id','store', 'price', 'Date_first_listed_on_Amazon', 'item_link', 'reviews_link', 'reviews', 'store_link', 'item_name', 'img_src', 'Rank', 'Read reviews that mention', 'star']
-with open('C:/Users/zbd/Desktop/3.csv','w',newline='',encoding='utf-8') as f:
+with open('C:/Users/Mirco/Desktop/3.csv','w',newline='',encoding='utf-8') as f:
     f_csv = csv.DictWriter(f,headers)
     f_csv.writeheader()
     f_csv.writerows(item_info)
