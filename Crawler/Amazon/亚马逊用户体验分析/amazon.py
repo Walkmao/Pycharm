@@ -70,7 +70,7 @@ def main():
     # 从excel表中一行一行输入id_
     ids = ASIN_id()
     for id_ in ids:
-        print id_
+        print (id_)
         referer = urlPart1 + str(id_) + urlPart2 + "1"
         lastPage = getPages(referer)
         header = getHeader(referer)
