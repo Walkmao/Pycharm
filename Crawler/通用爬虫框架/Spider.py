@@ -39,4 +39,6 @@ class Spider(object):
 
 if __name__ == '__main__':
     spider_man = Spider()
+    start_time = time.time()
     spider_man.Crawl("https://su.lianjia.com/ershoufang/pg{}")
+    print('一共用时：', time.time() - start_time)
