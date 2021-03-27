@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 import os
-
+import threading
 
 from win32com.client import Dispatch, constants, gencache, DispatchEx
 
-class PDFConverter:
+class PDFConverter(threading.Thread):
     def __init__(self, pathname, export='.'):
         self._handle_postfix = ['doc', 'docx', 'ppt', 'pptx', 'xls', 'xlsx']
         self._filename_list = list()
@@ -101,13 +101,29 @@ class PDFConverter:
     def pptx(self, filename):
         self.ppt(filename)
 
+
+    def main(self):
+        url_format = "https://su.lianjia.com/ershoufang/pg{}"
+        self.producer(url_format)  # 生产者生成目标爬取网址urls
+
+
+
 if __name__ == "__main__":
     # 支持文件夹批量导入
     folder = r"E:\TodoList\GBW\东区2020汇总体检报告"
     pathname = os.path.join(os.path.abspath('.'), folder)
-
+    pdfConverter = PDFConverter(pathname)
     # 也支持单个文件的转换
     # pathname = r"E:\TodoList\GBW\test\柏苏洋_202007170366.xlsx"
 
-    pdfConverter = PDFConverter(pathname)
-    pdfConverter.run_conver()
+    # 启动多线程
+    threads = []
+    for i in range(5):
+        t = PDFConverter(pathname).run_conver()
+        threads.append(t)
+
+    for t in threads:
+        t.start()
+
+    for t in threads:
+        t.join()

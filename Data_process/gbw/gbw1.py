@@ -1,7 +1,8 @@
 import os
 import pandas as pd
 
-path = r'E:\ToDoList\干保委\区政府个人报告2018'
+#path = r'E:\ToDoList\干保委\区政府个人报告2018'
+path = r"C:\Users\Mirco\Desktop\2020年区政府31人报告"
 filenames = os.listdir(path)
 
 sum_data = []
@@ -38,4 +39,4 @@ for filename in filenames:
     dic['糖化血红蛋白(GHb)'] = da[12]
     sum_data.append(dic)
 pd_data = pd.DataFrame(sum_data)
-pd_data.to_excel(r'E:\ToDoList\干保委\gbw.xlsx')
+pd_data.to_excel(r'C:\Users\Mirco\Desktop\gbw.xlsx')
